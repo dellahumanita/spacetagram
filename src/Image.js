@@ -35,17 +35,16 @@ class Image extends React.Component {
     }
 
     componentDidMount() {
-        const response = fetchFromAPI();
-        var results = [];
-        response.then((values) => {
-            for (let i=0; i < values.length; i++) {
-                results.push(values[i]);
-            }
-        });
-        console.log(results)
 
-        response.then(
-            (result) => {
+        var results = [];
+
+        fetchFromAPI()
+            .then((values) => {
+                for (let i=0; i < values.length; i++) {
+                    results.push(values[i]);
+                }
+            })
+            .then((result) => {
                 this.setState({
                     isLoaded: true,
                     items: results
@@ -74,9 +73,13 @@ class Image extends React.Component {
                 <ul>
                     {items.map(item => (
                         <li>
-                            {item.title} - {item.date}
+                            <h2>{item.title}</h2>
+                            {item.date}
                             <br />
                             <img src={item.url} alt={item.title} />
+                            <p>
+                                {item.explanation}
+                            </p>
                         </li>
                     ))}
                 </ul>
