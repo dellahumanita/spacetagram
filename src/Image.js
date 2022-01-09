@@ -13,7 +13,7 @@ function fetchFromAPI() {
     start_date.setDate(end_date.getDate() - 2);
     const date_range = '&start_date=' + start_date.toISOString().slice(0, 10) + '&end_date=' + end_date.toISOString().slice(0, 10);
 
-    var response = fetch(base_url + api_key)
+    var response = fetch(base_url + api_key + date_range)
         .then(response => response.json());
 
     console.log(response)
@@ -35,12 +35,20 @@ class Image extends React.Component {
     }
 
     componentDidMount() {
-        var response = fetchFromAPI();
+        const response = fetchFromAPI();
+        var results = [];
+        response.then((values) => {
+            for (let i=0; i < values.length; i++) {
+                results.push(values[i]);
+            }
+        });
+        console.log(results)
+
         response.then(
             (result) => {
                 this.setState({
                     isLoaded: true,
-                    items: [result]
+                    items: results
                 });
             },
             (error) => {
@@ -67,6 +75,8 @@ class Image extends React.Component {
                     {items.map(item => (
                         <li>
                             {item.title} - {item.date}
+                            <br />
+                            <img src={item.url} alt={item.title} />
                         </li>
                     ))}
                 </ul>
