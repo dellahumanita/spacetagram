@@ -79,7 +79,7 @@ class Image extends React.Component {
                 <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                     {items.map(item => (
                         <li className='m-3'>
-                            <div className='p-5 border border-gray-500'>
+                            <div className='p-5 bg-slate-50 rounded-lg shadow-lg'>
                                 <div className='flex justify-between pb-3'>
                                     <h2 className='font-body text-lg'>{item.title}</h2>
                                     <span className='mt-2'>{item.date}</span>
@@ -89,9 +89,9 @@ class Image extends React.Component {
                                     className=''
                                 />
 
-                                <p>
+                                {/* <p>
                                     {item.explanation}
-                                </p>
+                                </p> */}
                             </div>
                             
                         </li>
