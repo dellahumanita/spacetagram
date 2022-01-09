@@ -65,21 +65,35 @@ class Image extends React.Component {
         const { error, isLoaded, items } = this.state;
 
         if (error) {
+            // TODO: Style error message
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
+            // TODO: Style loading message
             return <div>Loading...</div>
         } else {
+
+            // split explanation into smaller chunks of text
+            // if length is greater than 100 characters, show only first 100 characters 
+
             return (
-                <ul>
+                <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                     {items.map(item => (
-                        <li>
-                            <h2>{item.title}</h2>
-                            {item.date}
-                            <br />
-                            <img src={item.url} alt={item.title} />
-                            <p>
-                                {item.explanation}
-                            </p>
+                        <li className='m-3'>
+                            <div className='p-5 border border-gray-500'>
+                                <div className='flex justify-between pb-3'>
+                                    <h2 className='font-body text-lg'>{item.title}</h2>
+                                    <span className='mt-2'>{item.date}</span>
+                                </div>
+
+                                <img src={item.url} alt={item.title}
+                                    className=''
+                                />
+
+                                <p>
+                                    {item.explanation}
+                                </p>
+                            </div>
+                            
                         </li>
                     ))}
                 </ul>

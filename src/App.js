@@ -8,12 +8,12 @@ function App() {
 
 
     return (
-        <div>
-            <header>
-                <h1>Spacestagram</h1>
+        <div className='bg-slate-100'>
+            <header className='p-5 shadow-md bg-slate-50'>
+                <h1 className='text-5xl'>Spacestagram</h1>
             </header>
 
-            <main>
+            <main className='py-10 px-6'>
                <Image />
             </main>
 

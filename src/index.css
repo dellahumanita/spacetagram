@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base { 
+    h1 {
+        @apply font-title;
+    }
+
+    p {
+        @apply font-body;
+        @apply p-3;
+    }
+
+}
