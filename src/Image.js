@@ -2,6 +2,7 @@ import React from 'react';
 
 import { config } from './config';
 import LikeButton from './LikeButton';
+import Loading from './Loading';
 
 
 function fetchFromAPI() {
@@ -73,19 +74,18 @@ class Image extends React.Component {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             // TODO: Style loading message
-            return <div>Loading...</div>
+            return (
+                <div className='grid place-items-center h-screen'>
+                    <Loading />
+                </div>
+            );
         } else {
 
-            // split explanation into smaller chunks of text
-            // if length is greater than 100 characters, show only first 100 characters 
 
             return (
-                // <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 <ul className='columns-1 md:columns-2 lg:columns-3'>
                     {items.map(item => (
                         <li className='m-3 py-4'>
-                            {/* <div className='pt-4 bg-slate-50 border border-gray-200'> */}
-
                             <div className='relative'>
 
                                 <img src={item.url} alt={item.title} className='w-full'/>
@@ -99,7 +99,7 @@ class Image extends React.Component {
                                     <LikeButton />
                                 </div>
 
-                                
+                                {/* TODO: open modal for explanation */}
 
                                 {/* <p>
                                     {item.explanation}
