@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { config } from './config';
+import LikeButton from './LikeButton';
 
 
 function fetchFromAPI() {
@@ -41,7 +42,10 @@ class Image extends React.Component {
         fetchFromAPI()
             .then((values) => {
                 for (let i=0; i < values.length; i++) {
-                    results.push(values[i]);
+                    // Only display APOD images 
+                    if (values[i].media_type === 'image') {
+                        results.push(values[i]);
+                    }
                 }
             })
             .then((result) => {
@@ -79,24 +83,30 @@ class Image extends React.Component {
                 // <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
                 <ul className='columns-1 md:columns-2 lg:columns-3'>
                     {items.map(item => (
-                        <li className='m-3'>
+                        <li className='m-3 py-4'>
                             {/* <div className='pt-4 bg-slate-50 border border-gray-200'> */}
 
                             <div className='relative'>
 
-                                <img src={item.url} alt={item.title}
-                                    className='w-full object-cover'
-                                />
+                                <img src={item.url} alt={item.title} className='w-full'/>
 
-                                <div className='flex justify-between gap-4 py-2 px-4 absolute bottom-0 left-0 text-xs w-full bg-white bg-opacity-50 font-body text-white'>
+                                <div className='flex justify-between gap-4 py-2 px-4 absolute bottom-0 left-0 text-xs w-full bg-white bg-opacity-50 font-body '>
                                     <h2 className='font-body '>{item.title}</h2>
                                     <span className=''>{item.date}</span>
                                 </div>
 
+                                <div className='absolute top-0 right-0' >
+                                    <LikeButton />
+                                </div>
+
+                                
+
                                 {/* <p>
                                     {item.explanation}
                                 </p> */}
+                                
                             </div>
+                            
                             
                         </li>
                     ))}
