@@ -90,8 +90,8 @@ class Image extends React.Component {
 
                                 <img src={item.url} alt={item.title} className='w-full'/>
 
-                                <div className='flex justify-between gap-4 py-2 px-4 absolute bottom-0 left-0 text-xs w-full bg-white bg-opacity-50 font-body '>
-                                    <h2 className='font-body '>{item.title}</h2>
+                                <div className='flex justify-between gap-4 py-2 px-4 absolute bottom-0 left-0 text-xs w-full bg-white bg-opacity-50 font-body text-white'>
+                                    <h2>{item.title}</h2>
                                     <span className=''>{item.date}</span>
                                 </div>
 
