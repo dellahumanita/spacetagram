@@ -13,13 +13,11 @@ function fetchFromAPI() {
     // Get a range of dates to get images from
     const start_date = new Date();
     const end_date = new Date();
-    start_date.setDate(end_date.getDate() - 20);
+    start_date.setDate(end_date.getDate() - 50);
     const date_range = '&start_date=' + start_date.toISOString().slice(0, 10) + '&end_date=' + end_date.toISOString().slice(0, 10);
 
     var response = fetch(base_url + api_key + date_range)
         .then(response => response.json());
-
-    console.log(response)
 
     return response;
 }
@@ -34,18 +32,8 @@ class ImageGrid extends React.Component {
             isLoaded: false,
             items: []
         };
-        this.showCard = this.showCard.bind(this);
-        this.hideCard = this.hideCard.bind(this);
 
     }
-
-    showCard() {
-        this.setState({show: true })
-    };
-
-    hideCard() {
-        this.setState({show: false })
-    };
 
     componentDidMount() {
 
@@ -61,6 +49,7 @@ class ImageGrid extends React.Component {
                         results.push(values[i]);
                     }
                 }
+                results.reverse();
             })
             .then((result) => {
                 this.setState({
@@ -83,8 +72,10 @@ class ImageGrid extends React.Component {
         const { error, isLoaded, items } = this.state;
 
         if (error) {
-            // TODO: Style error message
-            return <div>Error: {error.message}</div>;
+            return <div className='grid place-items-center h-screen'>
+                <h1 className='text-center text-2xl'>Sorry!</h1>
+                <h2 className='text-center text-xl text-gray-500'>Something went wrong. Please try again later.</h2>
+            </div>;
 
         } else if (!isLoaded) {
             return (
@@ -100,20 +91,21 @@ class ImageGrid extends React.Component {
                         <li className='m-3 py-4'>
                             <motion.div 
                                 className='bg-slate-50 rounded shadow-md pb-5'
-                                whileHover={{scale: 1.05}}
-                                onClick={this.showCard}>
+                                whileHover={{scale: 1.05}}>
 
 
                                 <div className='flex flex-col gap-y-2 p-3'>
                                     <div className='flex flex-row justify-between'>
-                                        <h2 className='font-semibold'>{item.title}</h2>
+                                        <h2>{item.title}</h2>
                                         <LikeButton />
                                     </div>
                                     
                                     <span className='text-gray-400'>{item.date}</span>
                                 </div>
 
-                                <img src={item.url} alt={item.title} className='w-full'/>
+                                <a href={item.url}>
+                                    <img src={item.url} alt={item.title} className='w-full cursor-pointer' />
+                                </a>
 
                                 <div className='m-3'>
                                     <p className='text-sm leading-relaxed'>{item.explanation}</p>
