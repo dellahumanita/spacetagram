@@ -13,7 +13,7 @@ function fetchFromAPI() {
     // Get a range of dates to get images from
     const start_date = new Date();
     const end_date = new Date();
-    start_date.setDate(end_date.getDate() - 50);
+    start_date.setDate(end_date.getDate() - 30);
     const date_range = '&start_date=' + start_date.toISOString().slice(0, 10) + '&end_date=' + end_date.toISOString().slice(0, 10);
 
     var response = fetch(base_url + api_key + date_range)
@@ -86,9 +86,9 @@ class ImageGrid extends React.Component {
         } else {
 
             return (
-                <ul className='flex flex-col w-11/12 md:w-5/6 lg:w-1/2 m-auto'>
-                    {items.map(item => (
-                        <li className='m-3 py-4'>
+                <ul className='flex flex-col w-full md:w-5/6 lg:w-1/2 m-auto'>
+                    {items.map((item, index) => (
+                        <li key={index} className='m-3 py-4'>
                             <motion.div 
                                 className='bg-slate-50 rounded shadow-md pb-5'
                                 whileHover={{scale: 1.05}}>
@@ -103,7 +103,7 @@ class ImageGrid extends React.Component {
                                     <span className='text-gray-400'>{item.date}</span>
                                 </div>
 
-                                <a href={item.url}>
+                                <a href={item.hdurl}>
                                     <img src={item.url} alt={item.title} className='w-full cursor-pointer' />
                                 </a>
 
