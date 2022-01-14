@@ -2,7 +2,7 @@
   "name": "shopify_frontend_challenge",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dellahumanita.github.io",
+  "homepage": "https://dellahumanita.github.io/spacetagram",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
