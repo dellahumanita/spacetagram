@@ -8,7 +8,11 @@ import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-
+/**
+ * Creates a scrollind arrow that brings the user back to the top when clicked
+ * 
+ * @returns ScrollToTop component
+ */
 const ScrollToTop = () => { 
     const [showScroll, setShowScroll] = useState(false);
 

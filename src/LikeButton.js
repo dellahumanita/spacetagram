@@ -3,6 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 
+/**
+ * Creates a LikeButton component that animates when clicked
+ * 
+ * @returns LikeButton component
+ */
+
 function LikeButton() {
     const [liked, setLiked] = React.useState(false);
 

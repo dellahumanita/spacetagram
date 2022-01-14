@@ -3,8 +3,11 @@ import ImageGrid from './ImageGrid';
 import ScrollToTop from './scrollToTop';
 
 
+/**
+ * Main App component that contains the header, ImageGrid, and scrollToTop components
+ * @returns 
+ */
 function App() {
-
 
     return (
         <div className='bg-slate-100 min-h-screen static'>
@@ -27,7 +30,6 @@ function App() {
                 <ImageGrid />
             </main>
 
-            <footer></footer>
         </div>
     );
 }

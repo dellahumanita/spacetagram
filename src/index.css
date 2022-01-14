@@ -7,6 +7,7 @@
 @layer base { 
     h1, h2 {
         @apply font-title;
+        @apply text-blue-900
     }
 
     p {

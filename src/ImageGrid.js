@@ -5,7 +5,11 @@ import { config } from './config';
 import LikeButton from './LikeButton';
 import Loading from './Loading';
 
-
+/**
+ * Fetches data from the last 30 days from NASA's Picture of the Day API
+ * 
+ * @returns {Promise} response from fetch
+ */
 function fetchFromAPI() {
     const base_url = 'https://api.nasa.gov/planetary/apod?api_key=';
     const api_key = config.NASA_API_KEY;
@@ -22,7 +26,11 @@ function fetchFromAPI() {
     return response;
 }
 
-
+/**
+ * Creates a ImageGrid component that displays data from the NASA API in a grid
+ * 
+ * @returns ImageGrid component
+ */
 class ImageGrid extends React.Component {
     
     constructor(props) {
